@@ -4,8 +4,8 @@
 
 Name:       wiringpi
 Version:    2.46
-Summary:    WiringPi is a PIN based GPIO access library for BCM283x SoC devices
 Release:    1%{?dist}
+Summary:    PIN based GPIO access library for BCM283x SoC devices
 License:    LGPLv3
 URL:        http://wiringpi.com
 Source0:    https://git.drogon.net/?p=wiringPi;a=snapshot;h=%{commit_long};sf=tgz#/wiringPi-%{commit_short}.tar.gz
