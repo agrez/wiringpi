@@ -11,6 +11,7 @@ URL:        http://wiringpi.com
 Source0:    https://git.drogon.net/?p=wiringPi;a=snapshot;h=%{commit_long};sf=tgz#/wiringPi-%{commit_short}.tar.gz
 Patch0:     0001-Makefiles.patch
 ExclusiveArch:  armv7hl
+Requires:   %{name}-libs%{?_isa} = %{version}-%{release}
 
 %description
 WiringPi is a PIN based GPIO access library for the BCM2835, BCM2836 and
@@ -31,7 +32,7 @@ wrappers.
 
 %package devel
 Summary: Development libraries for %{name}
-Requires: %{name}-libs = %{version}-%{release}
+Requires: %{name}-libs%{?_isa} = %{version}-%{release}
 
 %description devel
 WiringPi development libraries to allow GPIO access on a Raspberry Pi from C
