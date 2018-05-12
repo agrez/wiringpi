@@ -65,6 +65,13 @@ for i in wiringPi devLib gpio; do
 done
 
 
+%if 0%{?fedora} < 28
+%post libs -p /sbin/ldconfig
+
+%postun libs -p /sbin/ldconfig
+%endif
+
+
 %files libs
 %defattr(-,root,root)
 %license COPYING.LESSER
