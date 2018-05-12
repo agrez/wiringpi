@@ -82,7 +82,6 @@ done
 
 %files devel
 %defattr(-,root,root)
-%license COPYING.LESSER
 %dir %{_includedir}/wiringPi
 %{_includedir}/wiringPi/*.h
 %{_libdir}/libwiringPi.so
@@ -91,7 +90,6 @@ done
 
 %files
 %defattr(-,root,root)
-%license COPYING.LESSER
 %doc People README.TXT VERSION pins/pins.pdf
 %attr(4755,root,root) %{_bindir}/gpio
 %{_mandir}/man1/*.1.*
