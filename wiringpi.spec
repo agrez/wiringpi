@@ -10,8 +10,8 @@ License:    LGPLv3
 URL:        http://wiringpi.com
 Source0:    https://git.drogon.net/?p=wiringPi;a=snapshot;h=%{commit_long};sf=tgz#/wiringPi-%{commit_short}.tar.gz
 Patch0:     0001-Makefiles.patch
-ExclusiveArch:  armv7hl
 Requires:   %{name}-libs%{?_isa} = %{version}-%{release}
+ExclusiveArch: %{arm} aarch64
 
 %description
 WiringPi is a PIN based GPIO access library for the BCM2835, BCM2836 and
@@ -62,7 +62,7 @@ popd
 # Install libraries & GPIO utility
 for i in wiringPi devLib gpio; do
     pushd $i
-    make install-fedora DESTDIR=%{buildroot} PREFIX=%{_prefix}
+    make install-fedora DESTDIR=%{buildroot} PREFIX=%{_prefix} LIBDIR=%{_libdir}
     popd
 done
 
