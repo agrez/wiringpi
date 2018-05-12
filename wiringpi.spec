@@ -5,7 +5,7 @@
 Name:       wiringpi
 Version:    2.46
 Summary:    WiringPi is a PIN based GPIO access library for BCM283x SoC devices
-Release:    1.git%{commit_short}%{?dist}
+Release:    1%{?dist}
 License:    LGPLv3
 URL:        http://wiringpi.com
 Source0:    https://git.drogon.net/?p=wiringPi;a=snapshot;h=%{commit_long};sf=tgz#/wiringPi-%{commit_short}.tar.gz
@@ -97,5 +97,5 @@ done
 
 
 %changelog
-* Tue May 08 2018 Vaughan Agrez <devel@agrez.net> - 2.46-1.git8d188fa
+* Tue May 08 2018 Vaughan Agrez <devel@agrez.net> - 2.46-1
 - Import into Fedora
