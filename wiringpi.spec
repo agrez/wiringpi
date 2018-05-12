@@ -1,3 +1,4 @@
+%global _hardened_build 1
 %global commit_long     8d188fa0e00bb8c6ff6eddd07bf92857e9bd533a
 %global commit_short    %(c=%{commit_long}; echo ${c:0:7})
 
