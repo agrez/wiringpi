@@ -68,8 +68,8 @@ done
 %files libs
 %defattr(-,root,root)
 %license COPYING.LESSER
-%{_libdir}/libwiringPi.so*
-%{_libdir}/libwiringPiDev.so*
+%{_libdir}/libwiringPi.so.*
+%{_libdir}/libwiringPiDev.so.*
 
 
 %files devel
