@@ -83,6 +83,7 @@ done
 
 %files devel
 %defattr(-,root,root)
+%doc examples/*
 %dir %{_includedir}/wiringPi
 %{_includedir}/wiringPi/*.h
 %{_libdir}/libwiringPi.so
