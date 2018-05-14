@@ -82,8 +82,6 @@ done
 %doc examples/*
 %dir %{_includedir}/wiringPi
 %{_includedir}/wiringPi/*.h
-%{_libdir}/libwiringPi.so
-%{_libdir}/libwiringPiDev.so
 
 
 %files
