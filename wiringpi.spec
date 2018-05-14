@@ -82,6 +82,10 @@ Libs: -L%{_libdir} -lwiringPi -lwiringPiDev -lpthread
 Cflags: -I%{_includedir}/wiringPi
 EOF
 
+# Fix spurious executable perm
+chmod -x examples/PiFace/ladder.c
+
+
 %install
 # Install libraries & GPIO utility
 for i in wiringPi devLib gpio; do
