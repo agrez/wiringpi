@@ -10,29 +10,27 @@ License:    LGPLv3
 URL:        http://wiringpi.com
 Source0:    https://git.drogon.net/?p=wiringPi;a=snapshot;h=%{commit_long};sf=tgz#/wiringPi-%{commit_short}.tar.gz
 Patch0:     0001-Makefiles.patch
-Requires:   %{name}-libs%{?_isa} = %{version}-%{release}
 ExclusiveArch: %{arm} aarch64
 
 %description
 WiringPi is a PIN based GPIO access library for the BCM2835, BCM2836 and
 BCM2837 SoC devices (Raspberry Pi devices). It is usable from C,
 C++ and RTB (BASIC) as well as many other languages with suitable
-wrappers. The wiringPi gpio utility is used for command line GPIO access.
-
-
-%package libs
-Summary: Shared libraries for %{name}
-
-%description libs
-WiringPi is a PIN based GPIO access library for the BCM2835, BCM2836 and
-BCM2837 SoC devices used in all Raspberry Pi devices. It is usable from C,
-C++ and RTB (BASIC) as well as many other languages with suitable
 wrappers.
 
 
+%package tools
+Summary:    Utility tools for %{name}
+Requires:   %{name}%{?_isa} = %{version}-%{release}
+
+%description tools
+The wiringPi gpio utility is used for command line GPIO access. It be used in
+scripts to manipulate the GPIO pins, set outputs and read inputs.
+
+
 %package devel
-Summary: Development libraries for %{name}
-Requires: %{name}-libs%{?_isa} = %{version}-%{release}
+Summary:    Development libraries for %{name}
+Requires:   %{name}%{?_isa} = %{version}-%{release}
 
 %description devel
 WiringPi development libraries to allow GPIO access on a Raspberry Pi from C
@@ -67,30 +65,31 @@ for i in wiringPi devLib gpio; do
 done
 
 
-%ldconfig_scriptlets libs
+
+%ldconfig_scriptlets
 
 
-%files libs
+%files devel
 %defattr(-,root,root)
+%doc examples
+%dir %{_includedir}/wiringPi
+%{_includedir}/wiringPi/*.h
+
+
+%files tools
+%defattr(-,root,root)
+%{_bindir}/gpio
+%{_mandir}/man1/*.1.*
+
+
+%files
+%defattr(-,root,root)
+%doc People README.TXT pins/pins.pdf
 %license COPYING.LESSER
 %{_libdir}/libwiringPi.so.*
 %{_libdir}/libwiringPiDev.so.*
 
 
-%files devel
-%defattr(-,root,root)
-%doc examples/*
-%dir %{_includedir}/wiringPi
-%{_includedir}/wiringPi/*.h
-
-
-%files
-%defattr(-,root,root)
-%doc People README.TXT VERSION pins/pins.pdf
-%attr(4755,root,root) %{_bindir}/gpio
-%{_mandir}/man1/*.1.*
-
-
 %changelog
-* Tue May 08 2018 Vaughan Agrez <devel@agrez.net> - 2.46-1
+* Mon May 14 2018 Vaughan Agrez <devel@agrez.net> - 2.46-1
 - Import into Fedora
