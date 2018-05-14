@@ -55,6 +55,32 @@ make %{?_smp_mflags} DEBUG="%{optflags}" \
 LDFLAGS="-L../wiringPi -L../devLib %{__global_ldflags}"
 popd
 
+# Create pkgconfig files
+%{__cat} << EOF > wiringPi.pc
+prefix=%{_prefix}
+exec_prefix=%{_prefix}
+libdir=%{_libdir}
+includedir=%{_includedir}
+
+Name: wiringPi
+Description: wiringPi library
+Version: %{version}
+Libs: -L%{_libdir} -lwiringPi -lpthread
+Cflags: -I%{_includedir}/wiringPi
+EOF
+
+%{__cat} << EOF > wiringPiDev.pc
+prefix=%{_prefix}
+exec_prefix=%{_prefix}
+libdir=%{_libdir}
+includedir=%{_includedir}
+
+Name: wiringPiDev
+Description: wiringPi device library
+Version: %{version}
+Libs: -L%{_libdir} -lwiringPi -lwiringPiDev -lpthread
+Cflags: -I%{_includedir}/wiringPi
+EOF
 
 %install
 # Install libraries & GPIO utility
@@ -64,6 +90,9 @@ for i in wiringPi devLib gpio; do
     popd
 done
 
+# Install pkgconfig files
+%{__mkdir} -p %{buildroot}%{_libdir}/pkgconfig
+%{__install} -p -m 0644 *.pc %{buildroot}%{_libdir}/pkgconfig/
 
 
 %ldconfig_scriptlets
@@ -73,6 +102,7 @@ done
 %defattr(-,root,root)
 %doc examples
 %dir %{_includedir}/wiringPi
+%{_libdir}/pkgconfig/*.pc
 %{_includedir}/wiringPi/*.h
 
 
