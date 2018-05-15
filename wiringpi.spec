@@ -10,7 +10,7 @@ License:    LGPLv3
 URL:        http://wiringpi.com
 Source0:    https://git.drogon.net/?p=wiringPi;a=snapshot;h=%{commit_long};sf=tgz#/wiringPi-%{commit_short}.tar.gz
 Patch0:     0001-Makefiles.patch
-ExclusiveArch: %{arm} aarch64
+ExclusiveArch: %{arm}
 
 %description
 WiringPi is a PIN based GPIO access library for the BCM2835, BCM2836 and
