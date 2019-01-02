@@ -12,6 +12,9 @@ Source0:    https://git.drogon.net/?p=wiringPi;a=snapshot;h=%{commit_long};sf=tg
 Patch0:     0001-Makefiles.patch
 ExclusiveArch: %{arm}
 
+BuildRequires: gcc
+
+
 %description
 WiringPi is a PIN based GPIO access library for the BCM2835, BCM2836 and
 BCM2837 SoC devices (Raspberry Pi devices). It is usable from C,
