@@ -101,6 +101,12 @@ done
 %{__mkdir} -p %{buildroot}%{_libdir}/pkgconfig
 %{__install} -p -m 0644 *.pc %{buildroot}%{_libdir}/pkgconfig/
 
+# symlink to *.so to make -lwiringPi work with the -devel package installed
+pushd %{buildroot}%{_libdir}
+ln -s libwiringPi.so.0    libwiringPi.so
+ln -s libwiringPiDev.so.0 libwiringPiDev.so
+popd
+
 
 %ldconfig_scriptlets
 
@@ -111,6 +117,8 @@ done
 %dir %{_includedir}/wiringPi
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/wiringPi/*.h
+%{_libdir}/libwiringPi.so
+%{_libdir}/libwiringPiDev.so
 
 
 %files tools
